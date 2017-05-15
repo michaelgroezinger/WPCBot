@@ -49,6 +49,8 @@ intents.matches('Help', [
     }
     ]);
 
+// This is the intents section 
+//
 
 intents.matches('Understand', [
     function(session, args) { 
