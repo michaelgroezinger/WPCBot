@@ -64,7 +64,7 @@ intents.matches('Understand', [
             } else if  (service.entity == 'sharepoint') {
                  session.send('SharePoint is the place for teams.')
             }
-        }
+        };
         
         if (activity) {
             session.send( 'You want to understand the activity' + activity.entity + ' - Cool !');
