@@ -65,15 +65,9 @@ intents.matches('Understand', [
                  session.send('SharePoint is the place for teams.')
             }
         }
-        else {
-            session.send('no service found');
-        };
         
         if (activity) {
             session.send( 'You want to understand the activity' + activity.entity + ' - Cool !');
-        }
-        else {
-            session.send('no activity found');
         }
     }
     ]);
