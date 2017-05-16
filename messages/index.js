@@ -65,7 +65,7 @@ intents.matches('Understand', [
                 session.send('OneDrive is your personal store! It provides a lot of important features like external sharing.')
             } else if  (service.entity == 'sharepoint') {
                  session.beginDialog('/u_spo');
-                 session.send('now we are back from the spo dialog')
+                 // session.send('now we are back from the spo dialog')
             } else if (service.entity == 'office 365') {
                 session.send('Office 365 is a set of Online Services for better collaboration')
             }
@@ -98,11 +98,11 @@ intents.matches('Learning', (session) => {session.send('The best place to learn 
 
 bot.dialog('/u_spo', [
     function(session,args, next) {
-        session.send('now we are in the spo dialog.');
+        session.send('SharePoint Online is a service that supports collaboration in larger teams.');
         next();
     },
     function(session,args, next) {
-        session.send('now we leave the spo dialog.');
+        // session.send('now we leave the spo dialog.');
         session.endDialog();
     }
 
