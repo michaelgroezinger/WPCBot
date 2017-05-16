@@ -60,7 +60,7 @@ intents.matches('Understand', [
 
         
         if (service) {
-            session.send( 'You want to understand the service: ' + service.entity + ' - Cool !');
+            session.send( 'You want to understand the service: "' + service.entity + '" - Cool !');
             if (service.entity == 'onedrive') {
                 session.send('OneDrive is your personal store! I provides a lot of important features like external sharing.')
             } else if  (service.entity == 'sharepoint') {
@@ -73,7 +73,7 @@ intents.matches('Understand', [
         var activity = builder.EntityRecognizer.findEntity(args.entities, 'Activity');
         
         if (activity) {
-            session.send( 'You want to understand the activity' + activity.entity + ' - Cool !');
+            session.send( 'You want to understand the activity: "' + activity.entity + '" - Cool !');
        
             if (activity.entity == 'Sharing') {
                 session.send('Sharing enables you to easily give others access to a document or folder.')
