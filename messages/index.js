@@ -64,7 +64,8 @@ intents.matches('Understand', [
             if (service.entity == 'onedrive') {
                 session.send('OneDrive is your personal store! It provides a lot of important features like external sharing.')
             } else if  (service.entity == 'sharepoint') {
-                 session.send('SharePoint is the place for teams.')
+                 session.beginDialog('/u_spo');
+                 session.send('now we are back from the spo dialog')
             } else if (service.entity == 'office 365') {
                 session.send('Office 365 is a set of Online Services for better collaboration')
             }
@@ -92,6 +93,19 @@ intents.matches('Search', (session) => {session.send('you want to search for ');
 intents.matches('Greeting', (session) => {session.send('Hallo, I am your Digital Workplace Bot for Office 365! Tell me what I can do for you');});
 
 intents.matches('Learning', (session) => {session.send('The best place to learn is to go to the Intranet');});
+
+// now there are the bot dialogs
+
+bot.dialog('/u_spo', [
+    function(session,args) {
+        session.send('now we are in the spo dialog.')
+    },
+    function(session,args) {
+        session.send('now we leave the spo dialog.')
+        session.endDialog();
+    }
+
+]);
 
 if (useEmulator) {
     var restify = require('restify');
