@@ -65,7 +65,7 @@ intents.matches('Understand', [
                 session.send('OneDrive is your personal store! I provides a lot of important features like external sharing.')
             } else if  (service.entity == 'sharepoint') {
                  session.send('SharePoint is the place for teams.')
-            } else if (service.entity == 'Office 365') {
+            } else if (service.entity == 'office 365') {
                 session.send('Office 365 is a set of Online Services for better collaboration')
             }
         };
