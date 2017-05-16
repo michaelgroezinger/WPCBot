@@ -17,6 +17,15 @@ var connector = useEmulator ? new builder.ChatConnector() : new botbuilder_azure
     openIdMetadata: process.env['BotOpenIdMetadata']
 });
 
+
+// Information lists
+
+var ServiceLabels = {
+    SharePoint: 'SharePoint Online',
+    OneDrive: 'OneDrive for Business',
+    OfficeOnline: 'Office Online',
+};
+
 var bot = new builder.UniversalBot(connector);
 
 // Make sure you add code to validate these fields
@@ -41,13 +50,33 @@ bot.dialog('/', intents);
 // intents.matches('Help',  (session) => {session.send('you need help');});
 
 intents.matches('Help', [
-    function(session) { 
+/*    function(session) { 
         builder.Prompts.text(session, 'What do you want help for?');
     },
     function(session, results) {
         session.send('You need help for ' + results.response );
-    }
-    ]);
+    } */
+    function (session) {
+        // prompt for helpl options
+    
+           builder.Prompts.choice(
+            session,
+            'Which service do you need help for?',
+            [ServiceLabels.SharePoint, ServiceLabels.OneDrive, ServiceLabels.OfficeOnline],
+            {
+                maxRetries: 3,
+                retryPrompt: 'Not a valid option'
+            })
+        },
+    function (session, result) {
+        if (!result.response) {
+            // exhausted attemps and no selection, start over
+            session.send('Ooops! Too many attemps :( But don\'t worry, I\'m handling that exception and you can try again!');
+        }
+
+        // on error, start over
+        }
+        ]);
 
 // This is the intents section 
 //
