@@ -65,12 +65,21 @@ intents.matches('Understand', [
                 session.send('OneDrive is your personal store! I provides a lot of important features like external sharing.')
             } else if  (service.entity == 'sharepoint') {
                  session.send('SharePoint is the place for teams.')
+            } else if (service.entity == 'Office 365') {
+                session.send('Office 365 is a set of Online Services for better collaboration')
             }
         };
         
         if (activity) {
             session.send( 'You want to understand the activity' + activity.entity + ' - Cool !');
-        }
+        };
+            if (activity.entity == 'Sharing') {
+                session.send('Sharing enables you to easily give others access to a document or folder')
+            } else if  (activity.entity == 'Co-authoring') {
+                 session.send('With this feature you can jointly edit a document. In the Online Version of Office even in real-time.')
+            } else if (activity.entity == 'Version History') {
+                session.send('Whenever a document is stored on OneDrive or SharePoint, the old version is stored in the version history.')
+            }
     }
     ]);
 
