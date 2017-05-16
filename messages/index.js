@@ -99,7 +99,7 @@ intents.matches('Learning', (session) => {session.send('The best place to learn 
 bot.dialog('/u_spo', [
     function(session,args) {
         session.send('now we are in the spo dialog.');
-        session.send('you want to understand ');
+        next();
     },
     function(session,args) {
         session.send('now we leave the spo dialog.');
