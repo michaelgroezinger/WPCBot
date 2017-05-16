@@ -57,7 +57,7 @@ intents.matches('Understand', [
         session.dialogData.entities = args.entities;
         
         var service = builder.EntityRecognizer.findEntity(args.entities, 'Service');
-        var activity = builder.EntityRecognizer.findEntity(args.entities, 'Activity');
+
         
         if (service) {
             session.send( 'You want to understand the service: ' + service.entity + ' - Cool !');
@@ -69,17 +69,20 @@ intents.matches('Understand', [
                 session.send('Office 365 is a set of Online Services for better collaboration')
             }
         };
+
+        var activity = builder.EntityRecognizer.findEntity(args.entities, 'Activity');
         
         if (activity) {
             session.send( 'You want to understand the activity' + activity.entity + ' - Cool !');
-        };
+       
             if (activity.entity == 'Sharing') {
-                session.send('Sharing enables you to easily give others access to a document or folder')
+                session.send('Sharing enables you to easily give others access to a document or folder.')
             } else if  (activity.entity == 'Co-Authoring') {
                  session.send('With this feature you can jointly edit a document. In the Online Version of Office even in real-time.')
             } else if (activity.entity == 'Version History') {
                 session.send('Whenever a document is stored on OneDrive or SharePoint, the old version is stored in the version history.')
             }
+         };
     }
     ]);
 
