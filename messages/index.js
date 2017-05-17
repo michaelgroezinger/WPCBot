@@ -147,9 +147,9 @@ intents.matches('Understand', [
         if (activity) {
             session.send( 'You want to understand the activity: "' + activity.entity + '" - Cool !');
        
-            if (activity.entity == 'Sharing') {
+            if (activity.entity == 'share') {
                 session.send('Sharing enables you to easily give others access to a document or folder.')
-            } else if  (activity.entity == 'Co-Authoring') {
+            } else if  (activity.entity == 'co-author') {
                  session.send('With this feature you can jointly edit a document. In the Online Version of Office even in real-time.')
             } else if (activity.entity == 'Version History') {
                 session.send('Whenever a document is stored on OneDrive or SharePoint, the old version is stored in the version history.')
