@@ -82,7 +82,7 @@ intents.matches('Help', [
         session.send('you need help - fine lets see');
         // create the card based on selection
         console.log('Aufruf create card');
-        var card = createCardThumbnailCard(session);
+        var card = createThumbnailCard(session);
         console.log('Nach create card');
         // attach the card to the reply message
         var msg = new builder.Message(session).addAttachment(card);
