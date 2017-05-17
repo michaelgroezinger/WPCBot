@@ -71,17 +71,18 @@ intents.matches('Help', [
     function (session, result) {
         if (!result.response) {
             // exhausted attemps and no selection, start over
-            session.send('Ooops! Too many attemps :( But don\'t worry, I\'m handling that exception and you can try again!');
-
-        var selection = result.response.entity;
-        switch (selection) {
-            case ServiceLabels.SharePoint:
-                session.send('You selected SharePoint.')
-            case ServiceLabels.OfficeOnline:
-                session.send('You selected Office Online.')
-            case ServiceLabels.OneDrive:
-                session.send('You selected OneDrive.');
+            session.send('Ooops! Too many attemps :( But don\'t worry, I\'m handling that exception and you can try again!')
         }
+        else {
+            var selection = result.response.entity;
+            switch (selection) {
+                case ServiceLabels.SharePoint:
+                    session.send('You selected SharePoint.')
+                case ServiceLabels.OfficeOnline:
+                    session.send('You selected Office Online.')
+                case ServiceLabels.OneDrive:
+                    session.send('You selected OneDrive.');
+            }
         }
 
         
