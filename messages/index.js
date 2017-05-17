@@ -145,7 +145,7 @@ intents.matches('Understand', [
         var activity = builder.EntityRecognizer.findEntity(args.entities, 'Activity');
         
         if (activity) {
-            session.send( 'You want to understand the activity: "' + activity.entity + '" - Cool !');
+            // session.send( 'You want to understand the activity: "' + activity.entity + '" - Cool !');
        
             if (activity.entity == 'share') {
                 session.send('Sharing enables you to easily give others access to a document or folder.')
@@ -153,8 +153,10 @@ intents.matches('Understand', [
                  session.send('Sharing enables you to easily give others access to a document or folder.')
             } else if  (activity.entity == 'co-author')  {
                  session.send('With this feature you can jointly edit a document. In the Online Version of Office even in real-time.')
-            } else if (activity.entity == 'Version History') {
+            } else if (activity.entity == 'versioning') {
                 session.send('Whenever a document is stored on OneDrive or SharePoint, the old version is stored in the version history.')
+            } else {
+                session.send('I did not get that, sorry!')
             }
          };
     }
