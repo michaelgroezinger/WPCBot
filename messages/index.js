@@ -92,7 +92,7 @@ intents.matches('Help', [
 
 
 
-        }/*,
+        }, /*,
     function (session, result) {
         if (!result.response) {
             // exhausted attemps and no selection, start over
@@ -114,7 +114,10 @@ intents.matches('Help', [
         }
 
         
-        }*/
+    }*/
+    function (session) {
+        session.send('Done')
+    }
         ]);
 
 // This is the intents section 
