@@ -61,11 +61,11 @@ intents.matches('Help', [
     
            builder.Prompts.choice(
             session,
-            'Which service do you need help for?',
+            'Which service do you need help for? ',
             [ServiceLabels.SharePoint, ServiceLabels.OneDrive, ServiceLabels.OfficeOnline],
             {
                 maxRetries: 3,
-                retryPrompt: 'Not a valid option'
+                retryPrompt: 'You selected a wrong option'
             })
         },
     function (session, result) {
