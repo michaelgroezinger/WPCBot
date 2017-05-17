@@ -77,11 +77,14 @@ intents.matches('Help', [
             var selection = result.response.entity;
             switch (selection) {
                 case ServiceLabels.SharePoint:
-                    session.send('You selected SharePoint.')
+                    session.send('You selected SharePoint.');
+                    break;
                 case ServiceLabels.OfficeOnline:
-                    session.send('You selected Office Online.')
+                    session.send('You selected Office Online.');
+                    break;
                 case ServiceLabels.OneDrive:
                     session.send('You selected OneDrive.');
+                    break;
             }
         }
 
