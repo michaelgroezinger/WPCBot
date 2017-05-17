@@ -88,7 +88,7 @@ intents.matches('Help', [
         var msg = new builder.Message(session).addAttachment(card);
         console.log('message created');
         session.send(msg);
-        console.log('Message sent');
+        console.log('Message sent')
 
 
 
