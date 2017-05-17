@@ -79,16 +79,16 @@ intents.matches('Help', [
                 maxRetries: 3,
                 retryPrompt: 'You selected a wrong option'
             }) */
-
+        session.send('you need help - fine lets see');
         // create the card based on selection
         console.log('Aufruf create card');
         var card = createCardThumbnailCard(session);
         console.log('Nach create card');
         // attach the card to the reply message
         var msg = new builder.Message(session).addAttachment(card);
-        console.log('message created')
+        console.log('message created');
         session.send(msg);
-        console.log('Message sent')
+        console.log('Message sent');
 
 
 
