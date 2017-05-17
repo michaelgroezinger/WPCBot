@@ -145,7 +145,7 @@ intents.matches('Understand', [
         var activity = builder.EntityRecognizer.findEntity(args.entities, 'Activity');
         
         if (activity) {
-            // session.send( 'You want to understand the activity: "' + activity.entity + '" - Cool !');
+            session.send( 'You want to understand the activity: "' + activity.entity + '" - Cool !');
        
             if (activity.entity == 'Sharing') {
                 session.send('Sharing enables you to easily give others access to a document or folder.')
