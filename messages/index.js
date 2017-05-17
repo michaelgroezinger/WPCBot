@@ -45,28 +45,51 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
     session.send('Sorry, We did not understand \'%s\'.', session.message.text);
 });
 
+// let's create cards
+
+function createThumbnailCard(session) {
+    return new builder.ThumbnailCard(session)
+        .title('Help Card')
+        .subtitle('There are different areas we can help you with')
+        .text('Which service do you need help for?')
+        /* .images([
+            builder.CardImage.create(session, 'https://sec.ch9.ms/ch9/7ff5/e07cfef0-aa3b-40bb-9baa-7c9ef8ff7ff5/buildreactionbotframework_960.jpg')
+        ])*/
+        .buttons([
+            builder.CardAction.openUrl(session, 'https://docs.microsoft.com/bot-framework', 'OneDrive'),
+            builder.CardAction.openUrl(session, 'https://docs.microsoft.com/bot-framework', 'SharePoint'),
+            builder.CardAction.openUrl(session, 'https://docs.microsoft.com/bot-framework', 'Office Online')
+        ]);
+}
+
 bot.dialog('/', intents);    
 
 // intents.matches('Help',  (session) => {session.send('you need help');});
 
 intents.matches('Help', [
-/*    function(session) { 
-        builder.Prompts.text(session, 'What do you want help for?');
-    },
-    function(session, results) {
-        session.send('You need help for ' + results.response );
-    } */
+
     function (session) {
         // prompt for helpl options
     
-           builder.Prompts.choice(
+          /* builder.Prompts.choice(
             session,
             'Which service do you need help for? ',
             [ServiceLabels.SharePoint, ServiceLabels.OneDrive, ServiceLabels.OfficeOnline],
             {
                 maxRetries: 3,
                 retryPrompt: 'You selected a wrong option'
-            })
+            }) */
+
+        // create the card based on selection
+
+        var card = createCardThumbnailCard(session);
+
+        // attach the card to the reply message
+        var msg = new builder.Message(session).addAttachment(card);
+        session.send(msg);
+
+
+
         },
     function (session, result) {
         if (!result.response) {
