@@ -188,6 +188,7 @@ bot.dialog('/u_spo', [
                     session.send('You selected working offline');
                     break;
                 case SharePointFeatures.exit:
+                    session.send('you want to leave - I am sad.')
                     session.endDialog();
             };
             session.send('leave spo prompt dialog');
