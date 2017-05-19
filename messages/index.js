@@ -30,7 +30,8 @@ var SharePointFeatures = {
     coauthoring: 'Co-Authoring',
     sharing: 'Sharing Documents',
     controlaccess: 'Controll access to files and folders',
-    workoffline: 'Working offline'
+    workoffline: 'Working offline',
+    exit: 'Exit'
 }
 
 var bot = new builder.UniversalBot(connector);
@@ -208,9 +209,11 @@ bot.dialog('/u_spo', [
                     break;
                 case SharePointFeatures.workoffline:
                     session.send('You selected working offline');
-            };
-            console.info('leave spo selection');
-            session.endDialog();
+                    break;
+                case SharePointFeatures.exit:
+                    session.endDialog();
+            }
+
         }
     },
 
