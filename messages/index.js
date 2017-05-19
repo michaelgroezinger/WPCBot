@@ -177,6 +177,7 @@ bot.dialog('/u_spo', [
             switch (selection) {
                 case SharePointFeatures.sharing:
                     session.send('You selected Sharing.');
+                    next();
                     break;
                 case SharePointFeatures.controlaccess:
                     session.send('You selected control access');
@@ -191,8 +192,6 @@ bot.dialog('/u_spo', [
                     session.send('you want to leave - I am sad.')
                     session.endDialog();
             };
-            session.send('leave spo prompt dialog');
-
         }
     },
 
