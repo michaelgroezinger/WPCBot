@@ -151,15 +151,11 @@ intents.matches('Learning', (session) => {session.send('The best place to learn 
 // now there are the bot dialogs
 
 bot.dialog('/u_spo', [
-    function(session,args, next) {
-        session.send('SharePoint Online is a service that supports collaboration in larger teams.');
-
-        next();
-    },
+    
     function (session, args, next) {
         builder.Prompts.choice(
             session,
-            'Which SharePoint Online feature would you like to know? ',
+            'SharePoint Online is a service that supports collaboration in larger teams.<br>Which SharePoint Online feature would you like to know? ',
             [SharePointFeatures.sharing, SharePointFeatures.controlaccess, SharePointFeatures.coauthoring, SharePointFeatures.workoffline, SharePointFeatures.exit],
             {
                 maxRetries: 3,
@@ -181,12 +177,15 @@ bot.dialog('/u_spo', [
                     break;
                 case SharePointFeatures.controlaccess:
                     session.send('You selected control access');
+                    next();
                     break;
                 case SharePointFeatures.coauthoring:
                     session.send('You seledted co-authoring');
+                    next();
                     break;
                 case SharePointFeatures.workoffline:
                     session.send('You selected working offline');
+                    next();
                     break;
                 case SharePointFeatures.exit:
                     session.send('you want to leave - I am sad.')
