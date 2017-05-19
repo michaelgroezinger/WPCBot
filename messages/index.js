@@ -58,7 +58,8 @@ function createThumbnailCard(session) {
         .buttons([
             builder.CardAction.openUrl(session, 'https://docs.microsoft.com/bot-framework', 'OneDrive'),
             builder.CardAction.openUrl(session, 'https://docs.microsoft.com/bot-framework', 'SharePoint'),
-            builder.CardAction.openUrl(session, 'https://docs.microsoft.com/bot-framework', 'Office Online')
+            builder.CardAction.openUrl(session, 'https://docs.microsoft.com/bot-framework', 'Office Online'),
+            builder.CardAction.dialogAction(session, session.send('hi there on onedrive'),'Onenote im ChatS')
         ]);
 }
 
