@@ -189,7 +189,8 @@ bot.dialog('/u_spo', [
                     session.send('you want to leave - I am sad.')
                     session.endDialog();
             };
-        }
+        };
+        next();
     },
 
     function (session,args, next) {
