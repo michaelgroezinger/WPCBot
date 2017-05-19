@@ -157,7 +157,7 @@ intents.matches('Understand', [
             } else if (activity.entity == 'migrate') {
                 session.send('You don\'t need to migrate all your files to OneDrive. Just do it in a step-by-step approach.')
             } else if (activity.entity == 'synchronize') {
-                session.send('In OneDrive or in Sharepoint Online navigate the item and click the synch button.')
+                session.send('In OneDrive click the sync button. In Sharepoint Online navigate the item and click the sync button.')
             } else {
                 session.send('I did not get that, sorry!')
             }
