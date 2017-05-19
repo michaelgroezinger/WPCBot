@@ -195,8 +195,8 @@ bot.dialog('/u_spo', [
     },
 
     function (session,args, next) {
-        session.send('now we start the next spo dialog.');
-        session.beginDialog('/u_spo');
+        session.send('now we leave the spo dialog.');
+        // session.beginDialog('/u_spo');
         session.endDialog();
     }
 
