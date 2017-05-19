@@ -91,7 +91,6 @@ intents.matches('Help', [
         console.log('Message sent')
 
 
-
         }, /*,
     function (session, result) {
         if (!result.response) {
@@ -155,6 +154,8 @@ intents.matches('Understand', [
                  session.send('With this feature you can jointly edit a document. In the Online Version of Office even in real-time.')
             } else if (activity.entity == 'versioning') {
                 session.send('Whenever a document is stored on OneDrive or SharePoint, the old version is stored in the version history.')
+            } else if (activity.entity == 'migrate') {
+                session.send('You don\'t need to migrate all your files to OneDrive. Just do it in a step-by-step approach.')
             } else {
                 session.send('I did not get that, sorry!')
             }
