@@ -160,7 +160,7 @@ bot.dialog('/u_spo', [
         builder.Prompts.choice(
             session,
             'Which SharePoint Online feature would you like to know? ',
-            [SharePointFeatures.sharing, SharePointFeatures.controlaccess, SharePointFeatures.coauthoring, SharePointFeatures.workoffline],
+            [SharePointFeatures.sharing, SharePointFeatures.controlaccess, SharePointFeatures.coauthoring, SharePointFeatures.workoffline, SharePointFeatures.exit],
             {
                 maxRetries: 3,
                 retryPrompt: 'You selected a wrong option! Try again.'
