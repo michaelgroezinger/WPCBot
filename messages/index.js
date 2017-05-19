@@ -57,8 +57,7 @@ function createThumbnailCard(session) {
         ])*/
         .buttons([
             builder.CardAction.openUrl(session, 'https://sharepoint.microsoft.com', 'SharePoint'),
-            builder.CardAction.openUrl(session, 'https://microsoft.com/office', 'Office Online'),
-            builder.CardAction.dialogAction(session, session.send('hi'),,'OneNote Dialog')
+            builder.CardAction.openUrl(session, 'https://microsoft.com/office', 'Office Online')
         ]);
 }
 
