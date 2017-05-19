@@ -208,8 +208,9 @@ bot.dialog('/u_spo', [
                     break;
                 case SharePointFeatures.workoffline:
                     session.send('You selected working offline');
+            };
+            console.info('leave spo selection');
             session.endDialog();
-            }
         }
     },
 
