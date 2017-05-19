@@ -212,7 +212,8 @@ bot.dialog('/u_spo', [
                     break;
                 case SharePointFeatures.exit:
                     session.endDialog();
-            }
+            };
+            session.send('leave spo prompt dialog');
 
         }
     },
