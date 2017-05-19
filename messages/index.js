@@ -26,6 +26,13 @@ var ServiceLabels = {
     OfficeOnline: 'Office Online',
 };
 
+var SharePointFeatures = {
+    coauthoring: 'Co-Authoring',
+    sharing: 'Sharing Documents',
+    controlaccess: 'Controll access to files and folders',
+    workoffline: 'Working offline'
+}
+
 var bot = new builder.UniversalBot(connector);
 
 // Make sure you add code to validate these fields
@@ -69,16 +76,7 @@ bot.dialog('/', intents);
 intents.matches('Help', [
 
     function (session) {
-        // prompt for helpl options
-    
-          /* builder.Prompts.choice(
-            session,
-            'Which service do you need help for? ',
-            [ServiceLabels.SharePoint, ServiceLabels.OneDrive, ServiceLabels.OfficeOnline],
-            {
-                maxRetries: 3,
-                retryPrompt: 'You selected a wrong option'
-            }) */
+      
         session.send('you need help - fine lets see');
         // create the card based on selection
         console.log('Aufruf create card');
@@ -150,7 +148,7 @@ intents.matches('Understand', [
                 session.send('Sharing enables you to easily give others access to a document or folder.')
             } else if  (activity.entity == 'sharing')  {
                  session.send('Sharing enables you to easily give others access to a document or folder.')
-            } else if  ((activity.entity == 'co-author') || (activity.entity == 'co - authoring') || (activity.entity == 'joint editing'))  {
+            } else if  ((activity.entity == 'co - author') || (activity.entity == 'co - authoring') || (activity.entity == 'joint editing'))  {
                  session.send('With this feature you can jointly edit a document. In the Online Version of Office even in real-time.')
             } else if (activity.entity == 'versioning') {
                 session.send('Whenever a document is stored on OneDrive or SharePoint, the old version is stored in the version history.')
@@ -177,9 +175,44 @@ intents.matches('Learning', (session) => {session.send('The best place to learn 
 bot.dialog('/u_spo', [
     function(session,args, next) {
         session.send('SharePoint Online is a service that supports collaboration in larger teams.');
+
         next();
     },
-    function(session,args, next) {
+    function (session, args, next) {
+        builder.Prompts.choice(
+            session,
+            'Which SharePoint Online feature would you like to know? ',
+            [SharePointFeatures.sharing, SharePointFeatures.controlaccess, SharePointFeatures.coauthoring, SharePointFeatures.workoffline],
+            {
+                maxRetries: 3,
+                retryPrompt: 'You selected a wrong option! Try again.'
+            }) ;
+            next();
+        
+    },
+    function (session, result, next) {
+        if (!result.response){
+            // exhausted attemps and no selection, start over
+            session.send('Ooops! Too many attemps :( But don\'t worry, I\'m handling that exception and you can try again!')
+        } else {
+            var selection = result.response.entity;
+            switch (selection) {
+                case SharePointFeatures.sharing:
+                    session.send('You selected Sharing.');
+                    break;
+                case SharePointFeatures.controlaccess:
+                    session.send('You selected control access');
+                    break;
+                case SharePointFeatures.coauthoring:
+                    session.send('You seledted co-authoring');
+                    break;
+                case SharePointFeatures.workoffline:
+                    session.send('You selected working offline');
+            }
+        }
+    },
+
+    function (session,args, next) {
         // session.send('now we leave the spo dialog.');
         session.endDialog();
     }
