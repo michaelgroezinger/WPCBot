@@ -186,8 +186,9 @@ bot.dialog('/u_spo', [
                     
                     break;
                 case SharePointFeatures.exit:
-                    session.send('you want to leave - I am sad.')
+                    session.send('you want to leave - I am sad.');
                     session.endDialog();
+                    break;
             };
         };
         next();
