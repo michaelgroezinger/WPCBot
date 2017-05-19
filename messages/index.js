@@ -65,7 +65,7 @@ function createThumbnailCard(session) {
 bot.dialog('/', intents);    
 
 // intents.matches('Help',  (session) => {session.send('you need help');});
-'
+
 intents.matches('Help', [
 
     function (session) {
