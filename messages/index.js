@@ -156,6 +156,8 @@ intents.matches('Understand', [
                 session.send('Whenever a document is stored on OneDrive or SharePoint, the old version is stored in the version history.')
             } else if (activity.entity == 'migrate') {
                 session.send('You don\'t need to migrate all your files to OneDrive. Just do it in a step-by-step approach.')
+            } else if (activity.entity == 'synchronize') {
+                session.send('In OneDrive or in Sharepoint Online navigate the item and click the synch button.')
             } else {
                 session.send('I did not get that, sorry!')
             }
