@@ -144,7 +144,7 @@ intents.matches('Understand', [
 
 intents.matches('Search', (session) => {session.send('you want to search for ');});
 
-intents.matches('Greeting', (session) => {session.send('Hallo, I am your Digital Workplace Bot for Office 365! Tell me what I can do for you');});
+intents.matches('Greeting', (session) => {session.send('Hallo, I am your Digital Workplace Bot for Office 365! <br> Tell me what I can do for you');});
 
 intents.matches('Learning', (session) => {session.send('The best place to learn is to go to the Intranet');});
 
@@ -177,15 +177,15 @@ bot.dialog('/u_spo', [
                     break;
                 case SharePointFeatures.controlaccess:
                     session.send('You selected control access');
-                    next();
+                
                     break;
                 case SharePointFeatures.coauthoring:
                     session.send('You seledted co-authoring');
-                    next();
+                    
                     break;
                 case SharePointFeatures.workoffline:
                     session.send('You selected working offline');
-                    next();
+                    
                     break;
                 case SharePointFeatures.exit:
                     session.send('you want to leave - I am sad.')
