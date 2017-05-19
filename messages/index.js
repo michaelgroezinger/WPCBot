@@ -106,7 +106,7 @@ intents.matches('Understand', [
 
         
         if (service) {
-            session.send( 'You want to understand the service: "' + service.entity + '" - Cool !');
+            // session.send( 'You want to understand the service: "' + service.entity + '" - Cool !');
             if (service.entity == 'onedrive') {
                 session.send('OneDrive is your personal store! It provides a lot of important features like external sharing.')
             } else if  (service.entity == 'sharepoint') {
@@ -120,7 +120,7 @@ intents.matches('Understand', [
         var activity = builder.EntityRecognizer.findEntity(args.entities, 'Activity');
         
         if (activity) {
-            session.send( 'You want to understand the activity: "' + activity.entity + '" - Cool !');
+            // session.send( 'You want to understand the activity: "' + activity.entity + '" - Cool !');
        
             if (activity.entity == 'share') {
                 session.send('Sharing enables you to easily give others access to a document or folder.')
@@ -156,7 +156,7 @@ bot.dialog('/u_spo', [
         builder.Prompts.choice(
             session,
             'SharePoint Online is a service that supports collaboration in larger teams.<br>Which SharePoint Online feature would you like to know? ',
-            [SharePointFeatures.sharing, SharePointFeatures.controlaccess, SharePointFeatures.coauthoring, SharePointFeatures.workoffline, SharePointFeatures.exit],
+            [SharePointFeatures.sharing, SharePointFeatures.controlaccess, SharePointFeatures.coauthoring, SharePointFeatures.workoffline],
             {
                 maxRetries: 3,
                 retryPrompt: 'You selected a wrong option! Try again.'
@@ -168,11 +168,10 @@ bot.dialog('/u_spo', [
             // exhausted attemps and no selection, start over
             session.send('Ooops! Too many attemps :( But don\'t worry, I\'m handling that exception and you can try again!')
         } else {
-            session.send('res: ' + result.response.text);
             var selection = result.response.entity;
             switch (selection) {
                 case SharePointFeatures.sharing:
-                    session.send('You selected Sharing.');
+                    session.send('You selected sharing.');
                     break;
                 case SharePointFeatures.controlaccess:
                     session.send('You selected control access');
@@ -186,17 +185,14 @@ bot.dialog('/u_spo', [
                     session.send('You selected working offline');
                     
                     break;
-                case SharePointFeatures.exit:
-                    session.send('you want to leave - I am sad.');
-                    session.endDialog();
-                    break;
+
             };
         };
         next();
     },
 
     function (session,args, next) {
-        session.send('now we leave the spo dialog.');
+        // session.send('now we leave the spo dialog.');
         // session.beginDialog('/u_spo');
         session.endDialog();
     }
