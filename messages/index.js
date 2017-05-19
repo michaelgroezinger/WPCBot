@@ -59,14 +59,14 @@ function createThumbnailCard(session) {
             builder.CardAction.openUrl(session, 'https://docs.microsoft.com/bot-framework', 'OneDrive'),
             builder.CardAction.openUrl(session, 'https://docs.microsoft.com/bot-framework', 'SharePoint'),
             builder.CardAction.openUrl(session, 'https://docs.microsoft.com/bot-framework', 'Office Online'),
-            builder.CardAction.dialogAction(session, session.send('hi there on onedrive'),'Onenote im ChatS')
+            builder.CardAction.dialogAction(session, session.send('hi'),,'OneNote Dialog')
         ]);
 }
 
 bot.dialog('/', intents);    
 
 // intents.matches('Help',  (session) => {session.send('you need help');});
-
+'
 intents.matches('Help', [
 
     function (session) {
