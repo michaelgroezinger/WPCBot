@@ -164,7 +164,7 @@ bot.dialog('/u_spo', [
             next();
         
     },
-    function (session, result, next) {
+    function (session, result) {
         if (!result.response){
             // exhausted attemps and no selection, start over
             session.send('Ooops! Too many attemps :( But don\'t worry, I\'m handling that exception and you can try again!')
