@@ -31,7 +31,7 @@ var SharePointFeatures = {
     sharing: 'Sharing Documents',
     controlaccess: 'Controll access to files and folders',
     workoffline: 'Working offline',
-    exit: 'Exit'
+    exit: 'Exit',
 }
 
 var bot = new builder.UniversalBot(connector);
@@ -88,31 +88,8 @@ intents.matches('Help', [
         console.log('message created');
         session.send(msg);
         console.log('Message sent')
-
-
-        }, /*,
-    function (session, result) {
-        if (!result.response) {
-            // exhausted attemps and no selection, start over
-            session.send('Ooops! Too many attemps :( But don\'t worry, I\'m handling that exception and you can try again!')
-        }
-        else {
-            var selection = result.response.entity;
-            switch (selection) {
-                case ServiceLabels.SharePoint:
-                    session.send('You selected SharePoint.');
-                    break;
-                case ServiceLabels.OfficeOnline:
-                    session.send('You selected Office Online.');
-                    break;
-                case ServiceLabels.OneDrive:
-                    session.send('You selected OneDrive.');
-                    break;
-            }
-        }
-
-        
-    }*/
+    }, 
+    
     function (session) {
         session.send('Done')
     }
