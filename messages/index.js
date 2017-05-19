@@ -156,15 +156,14 @@ bot.dialog('/u_spo', [
         builder.Prompts.choice(
             session,
             'SharePoint Online is a service that supports collaboration in larger teams.<br>Which SharePoint Online feature would you like to know? ',
-            [SharePointFeatures.sharing, SharePointFeatures.controlaccess, SharePointFeatures.coauthoring, SharePointFeatures.workoffline],
+            [SharePointFeatures.sharing, SharePointFeatures.controlaccess, SharePointFeatures.coauthoring, SharePointFeatures.workoffline, SharePointFeatures.exit],
             {
                 maxRetries: 3,
                 retryPrompt: 'You selected a wrong option! Try again.'
             }) ;
-            next();
         
     },
-    function (session, result) {
+    function (session, result, next) {
         if (!result.response){
             // exhausted attemps and no selection, start over
             session.send('Ooops! Too many attemps :( But don\'t worry, I\'m handling that exception and you can try again!')
@@ -179,16 +178,16 @@ bot.dialog('/u_spo', [
                 
                     break;
                 case SharePointFeatures.coauthoring:
-                    session.send('You seledted co-authoring');
+                    session.send('You selected co-authoring');
                     
                     break;
                 case SharePointFeatures.workoffline:
                     session.send('You selected working offline');
                     
-                //     break;
-                // case SharePointFeatures.exit:
-                //     session.send('you want to leave - I am sad.')
-                //     session.endDialog();
+                    break;
+                case SharePointFeatures.exit:
+                    session.send('you want to leave - I am sad.')
+                    session.endDialog();
             };
         }
     },
