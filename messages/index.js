@@ -168,6 +168,7 @@ bot.dialog('/u_spo', [
             // exhausted attemps and no selection, start over
             session.send('Ooops! Too many attemps :( But don\'t worry, I\'m handling that exception and you can try again!')
         } else {
+            session.send('res: ' + result.response.text);
             var selection = result.response.entity;
             switch (selection) {
                 case SharePointFeatures.sharing:
