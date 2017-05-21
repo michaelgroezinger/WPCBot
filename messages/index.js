@@ -228,6 +228,8 @@ bot.dialog('/u_od', [
                 retryPrompt: 'You selected a wrong option! Try again.'
             }) ;
 
+        session.send('after propmt');
+        
         if (!result.response){
             // exhausted attemps and no selection, start over
             session.send('Ooops! Too many attemps :( But don\'t worry, I\'m handling that exception and you can try again!')
