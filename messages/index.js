@@ -224,14 +224,14 @@ bot.dialog('/u_od', [
             var selection = result.response.entity;
             switch (selection) {
                 case ServiceFeatures.sharing:
-                    session.send('In OneDrive you share with others via the "Share" feature. You simply add the e-mail of you business partner and his or her access rights.');
+                    session.send('In OneDrive you share with others via the Share feature. You simply add the e-mail of you business partner and his or her access rights.');
                     break;
                 case ServiceFeatures.controlaccess:
-                    session.send('In OneDrive this is done with the "Share" feature, which also allows you to change access rights');
+                    session.send('In OneDrive this is done with the Share feature, which also allows you to change access rights');
                 
                     break;
                 case ServiceFeatures.coauthoring:
-                    session.send('You selected co-authoring');
+                    session.send('Co-authoring allows many users to work on the same document at the same time. In Office Online event in real-time');
                     
                     break;
                 case ServiceFeatures.workoffline:
