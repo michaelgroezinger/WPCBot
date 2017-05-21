@@ -211,7 +211,7 @@ bot.dialog('/u_od', [
         
     }, //end first funcion
 
-    function (session, args, next) {
+    function (session, results, next) {
 
         session.send('start while function');
         var choice = ServiceFeatures.coauthoring;
@@ -219,7 +219,7 @@ bot.dialog('/u_od', [
         while (choice != ServiceFeatures.exit) {
 
         session.send('in while loop');
-        var choice = builder.Prompts.choice(
+        builder.Prompts.choice(
             session,
             'Which feature would you like to get know? ',
             [ServiceFeatures.sharing, ServiceFeatures.controlaccess, ServiceFeatures.coauthoring, ServiceFeatures.workoffline, ServiceFeatures.exit],
@@ -228,13 +228,15 @@ bot.dialog('/u_od', [
                 retryPrompt: 'You selected a wrong option! Try again.'
             }) ;
 
-        session.send('after propmt' + choice.toString);
+        session.send('after propmt' + results.response.toString);
 
-        if (!choice.response){
+        choice = results.response;
+
+        if (!results.response.entity){
             // exhausted attemps and no selection, start over
             session.send('Ooops! Too many attemps :( But don\'t worry, I\'m handling that exception and you can try again!')
         } else {
-            var selection = choice.response.entity;
+            var selection = results.response.entity;
             switch (selection) {
                 case ServiceFeatures.sharing:
                     session.send('You selected sharing.');
