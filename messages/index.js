@@ -205,38 +205,23 @@ bot.dialog('/u_spo', [
 
 bot.dialog('/u_od', [
     
-    function (session,args,next) {
-       session.send('OneDrive is your personal place. What do you want to know about it? ');
-       next();
-        
-    }, //end first funcion
-
-    function (session, results, next) {
-
-        session.send('start while function');
-        var choice = ServiceFeatures.coauthoring;
-
-        while (choice != ServiceFeatures.exit) {
-
-        session.send('in while loop');
+       function (session, args, next) {
         builder.Prompts.choice(
             session,
-            'Which feature would you like to get know? ',
-            [ServiceFeatures.sharing, ServiceFeatures.controlaccess, ServiceFeatures.coauthoring, ServiceFeatures.workoffline, ServiceFeatures.exit],
+            'OneDrive for Business is you personal store with the key features of Office 365.<br>Which SharePoint Online feature would you like to know? ',
+            [ServiceFeatures.sharing, ServiceFeatures.controlaccess, ServiceFeatures.coauthoring, ServiceFeatures.workoffline],
             {
                 maxRetries: 3,
                 retryPrompt: 'You selected a wrong option! Try again.'
             }) ;
-
-        session.send('after propmt');
-
-        choice = results.response;
-
-        if (!results.response.entity){
+        
+    },
+    function (session, result, next) {
+        if (!result.response){
             // exhausted attemps and no selection, start over
             session.send('Ooops! Too many attemps :( But don\'t worry, I\'m handling that exception and you can try again!')
         } else {
-            var selection = results.response.entity;
+            var selection = result.response.entity;
             switch (selection) {
                 case ServiceFeatures.sharing:
                     session.send('You selected sharing.');
@@ -253,15 +238,9 @@ bot.dialog('/u_od', [
                     session.send('You selected working offline');
                     
                     break;
-                case ServiceFeatures.exit:
-                    session.send('Debug: bye');
-                    break;
 
-            }; // end switch
-        };// end elseif
-
-
-        }; // endwhile
+            };
+        };
         next();
     },
 
@@ -270,7 +249,6 @@ bot.dialog('/u_od', [
         // session.beginDialog('/u_spo');
         session.endDialog();
     }
-
 ]);
 
 if (useEmulator) {
