@@ -26,7 +26,7 @@ var ServiceLabels = {
     OfficeOnline: 'Office Online',
 };
 
-var SharePointFeatures = {
+var ServiceFeatures = {
     coauthoring: 'Co-Authoring',
     sharing: 'Sharing Documents',
     controlaccess: 'Controll access to files and folders',
@@ -108,10 +108,10 @@ intents.matches('Understand', [
         if (service) {
             // session.send( 'You want to understand the service: "' + service.entity + '" - Cool !');
             if (service.entity == 'onedrive') {
-                session.send('OneDrive is your personal store! It provides a lot of important features like external sharing.')
+                 session.beginDialog('/u_od');
             } else if  (service.entity == 'sharepoint') {
                  session.beginDialog('/u_spo');
-                 // session.send('now we are back from the spo dialog')
+
             } else if (service.entity == 'office 365') {
                 session.send('Office 365 is a set of Online Services for better collaboration')
             }
@@ -150,13 +150,15 @@ intents.matches('Learning', (session) => {session.send('The best place to learn 
 
 // now there are the bot dialogs
 
+// SharePoint dialog
+
 bot.dialog('/u_spo', [
     
     function (session, args, next) {
         builder.Prompts.choice(
             session,
             'SharePoint Online is a service that supports collaboration in larger teams.<br>Which SharePoint Online feature would you like to know? ',
-            [SharePointFeatures.sharing, SharePointFeatures.controlaccess, SharePointFeatures.coauthoring, SharePointFeatures.workoffline],
+            [ServiceFeatures.sharing, ServiceFeatures.controlaccess, ServiceFeatures.coauthoring, ServiceFeatures.workoffline],
             {
                 maxRetries: 3,
                 retryPrompt: 'You selected a wrong option! Try again.'
@@ -170,18 +172,69 @@ bot.dialog('/u_spo', [
         } else {
             var selection = result.response.entity;
             switch (selection) {
-                case SharePointFeatures.sharing:
+                case ServiceFeatures.sharing:
                     session.send('You selected sharing.');
                     break;
-                case SharePointFeatures.controlaccess:
+                case ServiceFeatures.controlaccess:
                     session.send('You selected control access');
                 
                     break;
-                case SharePointFeatures.coauthoring:
+                case ServiceFeatures.coauthoring:
                     session.send('You selected co-authoring');
                     
                     break;
-                case SharePointFeatures.workoffline:
+                case ServiceFeatures.workoffline:
+                    session.send('You selected working offline');
+                    
+                    break;
+
+            };
+        };
+        next();
+    },
+
+    function (session,args, next) {
+        // session.send('now we leave the spo dialog.');
+        // session.beginDialog('/u_spo');
+        session.endDialog();
+    }
+
+]);
+
+// OneDrive Dialog
+
+bot.dialog('/u_od', [
+    
+    function (session, args, next) {
+        builder.Prompts.choice(
+            session,
+            'OneDrive is your personal place. What do you want to know about it? ',
+            [ServiceFeatures.sharing, ServiceFeatures.controlaccess, ServiceFeatures.coauthoring, ServiceFeatures.workoffline],
+            {
+                maxRetries: 3,
+                retryPrompt: 'You selected a wrong option! Try again.'
+            }) ;
+        
+    },
+    function (session, result, next) {
+        if (!result.response){
+            // exhausted attemps and no selection, start over
+            session.send('Ooops! Too many attemps :( But don\'t worry, I\'m handling that exception and you can try again!')
+        } else {
+            var selection = result.response.entity;
+            switch (selection) {
+                case ServiceFeatures.sharing:
+                    session.send('You selected sharing.');
+                    break;
+                case ServiceFeatures.controlaccess:
+                    session.send('You selected control access');
+                
+                    break;
+                case ServiceFeatures.coauthoring:
+                    session.send('You selected co-authoring');
+                    
+                    break;
+                case ServiceFeatures.workoffline:
                     session.send('You selected working offline');
                     
                     break;
