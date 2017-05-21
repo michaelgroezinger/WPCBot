@@ -214,9 +214,9 @@ bot.dialog('/u_od', [
     function (session, result, next) {
 
         session.send('start while function');
-        // var choice = ServiceFeatures.coauthoring;
+        var choice = ServiceFeatures.coauthoring;
 
-        while (result.response.entity != ServiceFeatures.exit) {
+        while (choice != ServiceFeatures.exit) {
 
         session.send('in while loop');
         builder.Prompts.choice(
