@@ -218,7 +218,7 @@ bot.dialog('/u_od', [
 
         while (choice != ServiceFeatures.exit) {
 
-        session.send('in while loop' + choice.toString);
+        session.send('in while loop' + choice.entity.title);
         builder.Prompts.choice(
             session,
             'Which feature would you like to get know? ',
