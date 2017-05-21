@@ -228,10 +228,10 @@ bot.dialog('/u_od', [
                 retryPrompt: 'You selected a wrong option! Try again.'
             }) ;
         session.send('before choice setting');
-       // var choice = result.response.entity;
+        var choice = result.response.entity;
         session.send('after choice');
 
-        session.send('you selected' + result.response.entity);
+        // session.send('you selected' + result.response.entity);
 
         if (!result.response){
             // exhausted attemps and no selection, start over
