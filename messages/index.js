@@ -104,7 +104,8 @@ intents.matches('Understand', [
         
         var service = builder.EntityRecognizer.findEntity(args.entities, 'Service');
 
-        
+        if (!args.entities == null) {session.send('Sorry, I did not understand. :-(')};
+
         if (service) {
             // session.send( 'You want to understand the service: "' + service.entity + '" - Cool !');
             if (service.entity == 'onedrive') {
