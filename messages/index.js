@@ -218,7 +218,7 @@ bot.dialog('/u_od', [
 
         while (choice != ServiceFeatures.exit) {
 
-        session.send('in while loop');
+        session.send('in while loop' + choice.toString);
         builder.Prompts.choice(
             session,
             'Which feature would you like to get know? ',
@@ -227,8 +227,6 @@ bot.dialog('/u_od', [
                 maxRetries: 3,
                 retryPrompt: 'You selected a wrong option! Try again.'
             }) ;
-
-        session.send('you selected' + result.response.entity.toString);
 
         if (!result.response){
             // exhausted attemps and no selection, start over
@@ -257,9 +255,7 @@ bot.dialog('/u_od', [
 
             }; // end switch
         };// end elseif
-        session.send('before choice setting');
-        choice = result.response;
-        session.send('after choice' + choice.toString);
+
 
         }; // endwhile
         next();
