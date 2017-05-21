@@ -228,7 +228,7 @@ bot.dialog('/u_od', [
                 retryPrompt: 'You selected a wrong option! Try again.'
             }) ;
 
-        session.send('after propmt' + results.response.toString);
+        session.send('after propmt');
 
         choice = results.response;
 
