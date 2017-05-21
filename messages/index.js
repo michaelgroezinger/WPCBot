@@ -214,9 +214,9 @@ bot.dialog('/u_od', [
     function (session, result, next) {
 
         session.send('start while function');
-        var choice = ServiceFeatures.coauthoring;
+        // var choice = ServiceFeatures.coauthoring;
 
-        while (choice != ServiceFeatures.exit) {
+        while (result.response.entity != ServiceFeatures.exit) {
 
         session.send('in while loop');
         builder.Prompts.choice(
@@ -227,9 +227,9 @@ bot.dialog('/u_od', [
                 maxRetries: 3,
                 retryPrompt: 'You selected a wrong option! Try again.'
             }) ;
-        session.send('before choice setting');
+        /*session.send('before choice setting');
         var choice = result.response.entity;
-        session.send('after choice');
+        session.send('after choice');*/
 
         session.send('you selected' + result.response.entity);
 
