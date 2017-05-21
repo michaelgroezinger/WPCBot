@@ -214,7 +214,7 @@ bot.dialog('/u_od', [
     function (session, result, next) {
 
         session.send('start while function');
-        var choice = ServiceFeatures.coauthoring;
+        // var choice = ServiceFeatures.coauthoring;
 
         while (choice != ServiceFeatures.exit) {
 
