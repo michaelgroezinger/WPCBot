@@ -205,7 +205,7 @@ bot.dialog('/u_spo', [
 
 bot.dialog('/u_od', [
     
-    function (session, args, next) {
+    function (session) {
        session.send('OneDrive is your personal place. What do you want to know about it? ');
         
     }, //end first funcion
