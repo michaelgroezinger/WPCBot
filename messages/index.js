@@ -208,7 +208,7 @@ bot.dialog('/u_od', [
        function (session, args, next) {
         builder.Prompts.choice(
             session,
-            'OneDrive for Business is you personal store with the key features of Office 365.<br>Which SharePoint Online feature would you like to know? ',
+            'OneDrive for Business is you personal store with the key features of Office 365.<br>Which OneDrive feature would you like to know? ',
             [ServiceFeatures.sharing, ServiceFeatures.controlaccess, ServiceFeatures.coauthoring, ServiceFeatures.workoffline],
             {
                 maxRetries: 3,
@@ -224,10 +224,10 @@ bot.dialog('/u_od', [
             var selection = result.response.entity;
             switch (selection) {
                 case ServiceFeatures.sharing:
-                    session.send('You selected sharing.');
+                    session.send('In OneDrive you share with others via the "Share" feature. You simply add the e-mail of you business partner and his or her access rights.');
                     break;
                 case ServiceFeatures.controlaccess:
-                    session.send('You selected control access');
+                    session.send('In OneDrive this is done with the "Share" feature, which also allows you to change access rights');
                 
                     break;
                 case ServiceFeatures.coauthoring:
