@@ -112,7 +112,7 @@ intents.matches('Understand', [
             } else if  (service.entity == 'sharepoint') {
                  session.beginDialog('/u_spo');
 
-            } else if (service.entity == 'office 365') {
+            } else if ((service.entity == 'office 365') || (service.entity == 'o365' )) {
                 session.send('Office 365 is a set of Online Services for better collaboration')
             }
         };
@@ -206,17 +206,27 @@ bot.dialog('/u_spo', [
 bot.dialog('/u_od', [
     
     function (session, args, next) {
+       sessin.send('OneDrive is your personal place. What do you want to know about it? ');
+        
+    }, //end first funcion
+
+    function (session, result, next) {
+
+        var choice = ServiceFeatures.coauthoring;
+
+        while (choice != ServiceFeatures.exit) {
+
         builder.Prompts.choice(
             session,
-            'OneDrive is your personal place. What do you want to know about it? ',
-            [ServiceFeatures.sharing, ServiceFeatures.controlaccess, ServiceFeatures.coauthoring, ServiceFeatures.workoffline],
+            'Which feature would you like to get know? ',
+            [ServiceFeatures.sharing, ServiceFeatures.controlaccess, ServiceFeatures.coauthoring, ServiceFeatures.workoffline, ServicesFeatures.exit],
             {
                 maxRetries: 3,
                 retryPrompt: 'You selected a wrong option! Try again.'
             }) ;
-        
-    },
-    function (session, result, next) {
+
+        choice = result.response.entity;
+
         if (!result.response){
             // exhausted attemps and no selection, start over
             session.send('Ooops! Too many attemps :( But don\'t worry, I\'m handling that exception and you can try again!')
@@ -238,9 +248,13 @@ bot.dialog('/u_od', [
                     session.send('You selected working offline');
                     
                     break;
+                case ServiceFeatures.exit:
+                    session.send('Debug: bye');
+                    break;
 
-            };
-        };
+            }; // end switch
+        };// end elseif
+        }; // endwhile
         next();
     },
 
