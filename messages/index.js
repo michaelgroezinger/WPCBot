@@ -212,12 +212,12 @@ bot.dialog('/u_od', [
 
     function (session, result, next) {
 
-        session.send('start while function')
+        session.send('start while function');
         var choice = ServiceFeatures.coauthoring;
 
         while (choice != ServiceFeatures.exit) {
 
-        session.send('in while loop')
+        session.send('in while loop');
         builder.Prompts.choice(
             session,
             'Which feature would you like to get know? ',
