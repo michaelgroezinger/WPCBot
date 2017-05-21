@@ -64,9 +64,9 @@ function createThumbnailCard(session) {
             builder.CardImage.create(session, 'https://sec.ch9.ms/ch9/7ff5/e07cfef0-aa3b-40bb-9baa-7c9ef8ff7ff5/buildreactionbotframework_960.jpg')
         ])*/
         .buttons([
-            builder.CardAction.openUrl(session, 'https://sharepoint.microsoft.com', 'SharePoint'),
-            builder.CardAction.openUrl(session, 'https://microsoft.com/office', 'Office Online'),
-            builder.CardAction.openUrl(session, 'https://microsoft.com/onedrive', 'OneDrive')
+            builder.CardAction.openUrl(session, 'http://microsoft.com/sharepoint', 'SharePoint'),
+            builder.CardAction.openUrl(session, 'http://microsoft.com/office', 'Office Online'),
+            builder.CardAction.openUrl(session, 'http://microsoft.com/onedrive', 'OneDrive')
         ]);
 }
 
