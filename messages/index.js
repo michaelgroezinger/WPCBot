@@ -222,13 +222,15 @@ bot.dialog('/u_od', [
         builder.Prompts.choice(
             session,
             'Which feature would you like to get know? ',
-            [ServiceFeatures.sharing, ServiceFeatures.controlaccess, ServiceFeatures.coauthoring, ServiceFeatures.workoffline, ServicesFeatures.exit],
+            [ServiceFeatures.sharing, ServiceFeatures.controlaccess, ServiceFeatures.coauthoring, ServiceFeatures.workoffline, ServiceFeatures.exit],
             {
                 maxRetries: 3,
                 retryPrompt: 'You selected a wrong option! Try again.'
             }) ;
 
         choice = result.response.entity;
+
+        session.send('you selected' + result.response.entity);
 
         if (!result.response){
             // exhausted attemps and no selection, start over
