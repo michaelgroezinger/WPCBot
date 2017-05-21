@@ -214,7 +214,7 @@ bot.dialog('/u_od', [
     function (session, result, next) {
 
         session.send('start while function');
-        // var choice = ServiceFeatures.coauthoring;
+        var choice = ServiceFeatures.coauthoring;
 
         while (choice != ServiceFeatures.exit) {
 
@@ -227,9 +227,6 @@ bot.dialog('/u_od', [
                 maxRetries: 3,
                 retryPrompt: 'You selected a wrong option! Try again.'
             }) ;
-        session.send('before choice setting');
-        choice = result.response.entity;
-        session.send('after choice' + choice.toString);
 
         session.send('you selected' + result.response.entity);
 
@@ -260,6 +257,10 @@ bot.dialog('/u_od', [
 
             }; // end switch
         };// end elseif
+        session.send('before choice setting');
+        choice = result.response;
+        session.send('after choice' + choice.toString);
+
         }; // endwhile
         next();
     },
