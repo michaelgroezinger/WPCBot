@@ -227,9 +227,9 @@ bot.dialog('/u_od', [
                 maxRetries: 3,
                 retryPrompt: 'You selected a wrong option! Try again.'
             }) ;
-        /*session.send('before choice setting');
-        var choice = result.response.entity;
-        session.send('after choice');*/
+        session.send('before choice setting');
+       // var choice = result.response.entity;
+        session.send('after choice');
 
         session.send('you selected' + result.response.entity);
 
