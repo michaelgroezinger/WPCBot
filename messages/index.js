@@ -142,9 +142,11 @@ intents.matches('Understand', [
     ]);
 
 
-intents.matches('Search', (session) => {session.send('you want to search for ');});
+intents.matches('Search', (session) => {session.send('you want to search for something.... got to google :-)');});
 
-intents.matches('Greeting', (session) => {session.send('Hallo, I am your Digital Workplace Bot for Office 365! <br> Tell me what I can do for you');});
+intents.matches('None', (session) => {session.send('No intent found ... this if for debugging purposes')});
+
+intents.matches('Greeting', (session) => {session.send('Hallo, I am your Digital Workplace Bot for Office 365! <br> <br>Tell me what I can do for you');});
 
 intents.matches('Learning', (session) => {session.send('The best place to learn is to go to the Intranet');});
 
@@ -173,18 +175,18 @@ bot.dialog('/u_spo', [
             var selection = result.response.entity;
             switch (selection) {
                 case ServiceFeatures.sharing:
-                    session.send('You selected sharing.');
+                    session.send('In SharePoint Online sharing information with others is done by just moving data to a document library and making sure that all relevant persons have access to the site.');
                     break;
                 case ServiceFeatures.controlaccess:
-                    session.send('You selected control access');
+                    session.send('In SharePoint Online access to elements is controlled by so-called SharePoint groups. The admin of a site can change access rights.');
                 
                     break;
                 case ServiceFeatures.coauthoring:
-                    session.send('You selected co-authoring');
+                    session.send('Co-authoring allows many users to work on the same document at the same time. In Office Online even in real-time');
                     
                     break;
                 case ServiceFeatures.workoffline:
-                    session.send('You selected working offline');
+                    session.send('In the browser navigate to htts://portal.office.com. After log-in select SharePoint and navigate to the site and document library. There you click the Sync button and connect your PC to this SharePoint document library.');
                     
                     break;
 
@@ -231,11 +233,11 @@ bot.dialog('/u_od', [
                 
                     break;
                 case ServiceFeatures.coauthoring:
-                    session.send('Co-authoring allows many users to work on the same document at the same time. In Office Online event in real-time');
+                    session.send('Co-authoring allows many users to work on the same document at the same time. In Office Online even in real-time');
                     
                     break;
                 case ServiceFeatures.workoffline:
-                    session.send('You selected working offline');
+                    session.send('In the browser navigate to htts://portal.office.com. After log-in select OneDrive. There you click the Sync button and connect your PC to OneDrive.');
                     
                     break;
 
