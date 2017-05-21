@@ -101,10 +101,9 @@ intents.matches('Help', [
 intents.matches('Understand', [
     function(session, args) { 
         session.dialogData.entities = args.entities;
+        if (!args.entities) {session.send('Sorry, I did not understand. :-(')};
         
         var service = builder.EntityRecognizer.findEntity(args.entities, 'Service');
-
-        if (!args.entities == null) {session.send('Sorry, I did not understand. :-(')};
 
         if (service) {
             // session.send( 'You want to understand the service: "' + service.entity + '" - Cool !');
