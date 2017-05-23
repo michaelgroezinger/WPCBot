@@ -268,7 +268,7 @@ bot.dialog('/u_share', [
             next();
         } else {
             session.send('OK so let\'s find out, what you are missing.');
-            
+            next();
         };
         
     },
