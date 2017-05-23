@@ -266,12 +266,26 @@ bot.dialog('/u_share', [
             // exhausted attemps and no selection, start over
             session.send('OK, then let\'s continue.');
             session.endDialog();
-            session.send('leave u_share');
         } else {
             session.send('OK so let\'s find out, what you are missing.');
             next();
         };
         
+    },
+
+    function (session, results, next) {
+        builder.Prompts.confirm(session, 'Do you want to share externally?')
+    },
+
+    function (session,results,next) {
+        if (!result.response){
+            // exhausted attemps and no selection, start over
+            session.send('Fine, then you simply use the "Share" feature in either the browser or in Windows explorer.');
+            session.endDialog();
+        } else {
+            session.send('If you share externally, you need to look at the classification before you use the "Share" function.');
+            next();
+        };
     },
 
     function (session,args, next) {
