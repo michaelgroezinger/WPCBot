@@ -283,13 +283,14 @@ bot.dialog('/u_share', [
         builder.Prompts.confirm(session, 'Do you want to share externally?');
         next();
         } else {
+            session.send('found dialogdata scope');
             next();
         };
     },
 
     function (session, results, next) {
         session.send('test: start check for session dialog data.')
-        if ((!result.response) || (session.dialogData.scope.entity != 'external')) { 
+        if (!result.response) { 
             session.send('Fine, then you simply use the "Share" feature in either the browser or in Windows explorer.');
             session.endDialog();
         } else {
