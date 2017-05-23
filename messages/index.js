@@ -278,7 +278,7 @@ bot.dialog('/u_share', [
         
     },
 
-    function (session, results, next) {
+    function (session, result, next) {
         if (!session.dialogData.scope) {
         builder.Prompts.confirm(session, 'Do you want to share externally?');
         next();
@@ -288,7 +288,7 @@ bot.dialog('/u_share', [
         };
     },
 
-    function (session, results, next) {
+    function (session, result, next) {
         session.send('test: start check for session dialog data.')
         if (!result.response) { 
             session.send('Fine, then you simply use the "Share" feature in either the browser or in Windows explorer.');
