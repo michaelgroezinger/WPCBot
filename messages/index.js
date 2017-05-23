@@ -104,8 +104,11 @@ intents.matches('Understand', [
         // if (!args.entities) {session.send('Sorry, I did not understand. :-(')};
       
         var service = builder.EntityRecognizer.findEntity(args.entities, 'Service');
+        session.dialogData.service = service;
         var activity = builder.EntityRecognizer.findEntity(args.entities, 'Activity');
+        session.dialogData.activity = activity;
         var scope = builder.EntityRecognizer.findEntity(args.entity, 'Scope');
+        sessin.dialogData.scope = scope;
 
         if (service) {
             // session.send( 'You want to understand the service: "' + service.entity + '" - Cool !');
@@ -276,7 +279,7 @@ bot.dialog('/u_share', [
     },
 
     function (session, results, next) {
-        if (!scope) {
+        if (!session.dialogData.scope) {
         builder.Prompts.confirm(session, 'Do you want to share externally?');
         next();
         } else {
