@@ -104,6 +104,8 @@ intents.matches('Understand', [
         // if (!args.entities) {session.send('Sorry, I did not understand. :-(')};
       
         var service = builder.EntityRecognizer.findEntity(args.entities, 'Service');
+        var activity = builder.EntityRecognizer.findEntity(args.entities, 'Activity');
+        var scope = builder.EntityRecognizer.findEntity(args.entity, 'Scope');
 
         if (service) {
             // session.send( 'You want to understand the service: "' + service.entity + '" - Cool !');
@@ -117,7 +119,7 @@ intents.matches('Understand', [
             }
         };
 
-        var activity = builder.EntityRecognizer.findEntity(args.entities, 'Activity');
+
         
         if (activity) {
             // session.send( 'You want to understand the activity: "' + activity.entity + '" - Cool !');
@@ -274,11 +276,16 @@ bot.dialog('/u_share', [
     },
 
     function (session, results, next) {
-        builder.Prompts.confirm(session, 'Do you want to share externally?')
+        if (!scope) {
+        builder.Prompts.confirm(session, 'Do you want to share externally?');
+        next();
+        } else {
+            next();
+        };
     },
 
     function (session,results,next) {
-        if (!result.response){
+        if ((!result.response) || (scope.entity != 'external')){
             // exhausted attemps and no selection, start over
             session.send('Fine, then you simply use the "Share" feature in either the browser or in Windows explorer.');
             session.endDialog();
