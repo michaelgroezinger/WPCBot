@@ -269,7 +269,7 @@ bot.dialog('/u_share', [
     function (session, result, next) {
         if (!result.response){
             // exhausted attemps and no selection, start over
-            session.send('OK, then let\'s go back.');
+            session.send('OK, what\'s next?');
             session.endDialog();
         } else {
             // session.send('OK so let\'s find out, what you are missing.');
@@ -292,10 +292,8 @@ bot.dialog('/u_share', [
         // session.send('test: start check for session dialog data.')
         if (!result.response) { 
             session.send('Fine, then you simply use the "Share" feature in either the browser or in Windows explorer.');
-            session.endDialog();
         } else {
             session.send('If you share externally, you need to look at the classification before you use the "Share" function.');
-            next();
         };
     },
 
