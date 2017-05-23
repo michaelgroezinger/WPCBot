@@ -276,6 +276,7 @@ bot.dialog('/u_share', [
     function (session,args, next) {
         
         session.endDialog();
+        session.send('leave u_share')
     }
 
 ]);
