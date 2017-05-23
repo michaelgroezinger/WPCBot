@@ -122,11 +122,9 @@ intents.matches('Understand', [
         if (activity) {
             // session.send( 'You want to understand the activity: "' + activity.entity + '" - Cool !');
        
-            if ( (activity.entity == 'share') || ( activity.entity == 'sharing')) {
-                session.send('Sharing enables you to easily give others access to a document or folder.')
-            } else if  (activity.entity == 'sharing')  {
-                 // session.send('Sharing enables you to easily give others access to a document or folder.')
-                 session.beginDialog('/u_share');
+            if  ((activity.entity == 'share') || (activity.entity == "Sharing")) {
+                //session.send('Sharing enables you to easily give others access to a document or folder.')
+                session.beginDialog('/u_share');
             } else if  ((activity.entity == 'co - author') || (activity.entity == 'co - authoring') || (activity.entity == 'joint editing'))  {
                  session.send('With this feature you can jointly edit a document. In the Online Version of Office even in real-time.')
             } else if (activity.entity == 'versioning') {
