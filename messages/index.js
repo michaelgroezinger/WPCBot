@@ -270,7 +270,7 @@ bot.dialog('/u_share', [
             session.send('OK so let\'s find out, what you are missing.');
             next();
         };
-        
+        next();
     },
 
     function (session,args, next) {
