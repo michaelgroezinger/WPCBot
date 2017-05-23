@@ -300,9 +300,8 @@ bot.dialog('/u_share', [
     },
 
     function (session,args, next) {
-        
+        session.send('Go to the intranet to find more about classification.');
         session.endDialog();
-        session.send('leave u_share')
     }
 
 ]);
