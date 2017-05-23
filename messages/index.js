@@ -101,8 +101,8 @@ intents.matches('Help', [
 intents.matches('Understand', [
     function(session, args) { 
         session.dialogData.entities = args.entities;
-        if (!args.entities) {session.send('Sorry, I did not understand. :-(')};
-        
+        // if (!args.entities) {session.send('Sorry, I did not understand. :-(')};
+      
         var service = builder.EntityRecognizer.findEntity(args.entities, 'Service');
 
         if (service) {
@@ -125,7 +125,8 @@ intents.matches('Understand', [
             if ( (activity.entity == 'share') || ( activity.entity == 'sharing')) {
                 session.send('Sharing enables you to easily give others access to a document or folder.')
             } else if  (activity.entity == 'sharing')  {
-                 session.send('Sharing enables you to easily give others access to a document or folder.')
+                 // session.send('Sharing enables you to easily give others access to a document or folder.')
+                 session.beginDialog('/u_share');
             } else if  ((activity.entity == 'co - author') || (activity.entity == 'co - authoring') || (activity.entity == 'joint editing'))  {
                  session.send('With this feature you can jointly edit a document. In the Online Version of Office even in real-time.')
             } else if (activity.entity == 'versioning') {
@@ -252,6 +253,38 @@ bot.dialog('/u_od', [
         session.endDialog();
     }
 ]);
+
+// Understanding Sharing Dialog
+
+bot.dialog('/u_share', [
+    
+    function (session, args, next) {
+       session.send('Sharing enables you to easily give others access to a document or folder.');
+       builder.Prompts.confirm(session,'Do you want to know more about sharing documents?');
+        
+    },
+    function (session, result, next) {
+        if (!result.response){
+            // exhausted attemps and no selection, start over
+            session.send('OK, then let\'s continue.');
+            next();
+        } else {
+            session.send('OK so let\'s find out, what you are missing.');
+            
+        };
+        
+    },
+
+    function (session,args, next) {
+        
+        session.endDialog();
+    }
+
+]);
+
+
+
+// special Stuff
 
 if (useEmulator) {
     var restify = require('restify');
