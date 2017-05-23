@@ -289,7 +289,7 @@ bot.dialog('/u_share', [
     },
 
     function (session, result, next) {
-        session.send('test: start check for session dialog data.')
+        // session.send('test: start check for session dialog data.')
         if (!result.response) { 
             session.send('Fine, then you simply use the "Share" feature in either the browser or in Windows explorer.');
             session.endDialog();
