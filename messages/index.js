@@ -265,12 +265,13 @@ bot.dialog('/u_share', [
         if (!result.response){
             // exhausted attemps and no selection, start over
             session.send('OK, then let\'s continue.');
-            next();
+            session.endDialog();
+            session.send('leave u_share');
         } else {
             session.send('OK so let\'s find out, what you are missing.');
             next();
         };
-        next();
+        
     },
 
     function (session,args, next) {
