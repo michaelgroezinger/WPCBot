@@ -288,7 +288,7 @@ bot.dialog('/u_share', [
     },
 
     function (session,results,next) {
-        if ((!result.response) || (scope.entity != 'external')){
+        if ((!result.response) || (session.dialogData.scope.entity != 'external')){
             // exhausted attemps and no selection, start over
             session.send('Fine, then you simply use the "Share" feature in either the browser or in Windows explorer.');
             session.endDialog();
