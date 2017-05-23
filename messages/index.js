@@ -269,10 +269,10 @@ bot.dialog('/u_share', [
     function (session, result, next) {
         if (!result.response){
             // exhausted attemps and no selection, start over
-            session.send('OK, then let\'s continue.');
+            session.send('OK, then let\'s go back.');
             session.endDialog();
         } else {
-            session.send('OK so let\'s find out, what you are missing.');
+            // session.send('OK so let\'s find out, what you are missing.');
             next();
         };
         
@@ -287,9 +287,9 @@ bot.dialog('/u_share', [
         };
     },
 
-    function (session,results,next) {
-        if ((!result.response) || (session.dialogData.scope.entity != 'external')){
-            // exhausted attemps and no selection, start over
+    function (session, results, next) {
+        session.send('test: start check for session dialog data.')
+        if ((!result.response) || (session.dialogData.scope.entity != 'external')) { 
             session.send('Fine, then you simply use the "Share" feature in either the browser or in Windows explorer.');
             session.endDialog();
         } else {
