@@ -280,7 +280,7 @@ bot.dialog('/u_share', [
 
     function (session, result, next) {
         var scopelocal = session.dialogData.scope;
-        if (scopelocal.entity = "") {
+        if (scopelocal.entity == "") {
         builder.Prompts.confirm(session, 'Do you want to share externally?');
         next();
         } else {
