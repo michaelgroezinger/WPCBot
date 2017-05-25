@@ -109,7 +109,6 @@ intents.matches('Understand', [
         session.dialogData.activity = activity;
         var scope = builder.EntityRecognizer.findEntity(args.entities, 'Scope');
         session.dialogData.scope = scope;
-        session.send('test stringify');
         if (scope) {session.send('Scope found')}
         else {
             session.send('no scope found');
@@ -134,7 +133,7 @@ intents.matches('Understand', [
        
             if  ((activity.entity == 'share') || (activity.entity == "Sharing")) {
                 //session.send('Sharing enables you to easily give others access to a document or folder.')
-                session.beginDialog('/u_share', scope);
+                session.beginDialog('/u_share');
             } else if  ((activity.entity == 'co - author') || (activity.entity == 'co - authoring') || (activity.entity == 'joint editing'))  {
                  session.send('With this feature you can jointly edit a document. In the Online Version of Office even in real-time.')
             } else if (activity.entity == 'versioning') {
@@ -280,7 +279,8 @@ bot.dialog('/u_share', [
     },
 
     function (session, result, next) {
-        if (scope != " ") {
+        var scopelocal = session.dialogData.scope;
+        if (scopelocal = "") {
         builder.Prompts.confirm(session, 'Do you want to share externally?');
         next();
         } else {
