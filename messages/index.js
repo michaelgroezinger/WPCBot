@@ -109,6 +109,7 @@ intents.matches('Understand', [
         session.dialogData.activity = activity;
         var scope = builder.EntityRecognizer.findEntity(args.entity, 'Scope');
         session.dialogData.scope = scope;
+        session.send('test' + scope);
 
         if (service) {
             // session.send( 'You want to understand the service: "' + service.entity + '" - Cool !');
@@ -146,7 +147,7 @@ intents.matches('Understand', [
     ]);
 
 
-intents.matches('Search', (session) => {session.send('you want to search for something.... got to google :-)');});
+intents.matches('Search', (session) => {session.send('you want to search for something.... go to google :-)');});
 
 intents.matches('None', (session) => {session.send('No intent found ... this if for debugging purposes')});
 
