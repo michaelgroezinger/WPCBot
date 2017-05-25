@@ -108,7 +108,7 @@ intents.matches('Understand', [
         var activity = builder.EntityRecognizer.findEntity(args.entities, 'Activity');
         session.dialogData.activity = activity;
         var scope = builder.EntityRecognizer.findEntity(args.entities, 'Scope');
-        if (scope) {session.dialogData.scope = scope.entity;};
+        if (scope) {session.dialogData.scope = scope};
         if (scope) {session.send('Scope found "'+ scope.entity + '"')}
         else {
             session.send('no scope found #' + scope.entity + '#"');
