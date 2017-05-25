@@ -262,20 +262,16 @@ bot.dialog('/u_od', [
 bot.dialog('/u_share', [
     
     function (session, args, next) {
-       session.send('Sharing enables you to easily give others access to a document or folder.');
-       builder.Prompts.confirm(session,'Do you want to know more about sharing documents?');
+       builder.Prompts.confirm(session,'Sharing enables you to easily give others access to a document or folder. <br>Do you want to know more about sharing documents?');
         
     },
     function (session, result, next) {
         if (!result.response){
-            // exhausted attemps and no selection, start over
             session.send('OK, what\'s next?');
             session.endDialog();
         } else {
-            // session.send('OK so let\'s find out, what you are missing.');
             next();
         };
-        
     },
 
     function (session, result, next) {
