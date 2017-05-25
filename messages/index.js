@@ -281,7 +281,7 @@ bot.dialog('/u_share', [
         builder.Prompts.confirm(session, 'Do you want to share externally?');
         next();
         } else {
-            session.send('found dialogdata scope' + JSON.stringify(session.dialogData.scope);
+            session.send('found dialogdata scope' + JSON.stringify(session.dialogData.scope));
             next();
         };
     },
