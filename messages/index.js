@@ -282,7 +282,7 @@ bot.dialog('/u_share', [
 
     function (session, result, next) {
         var scopelocal = session.dialogData.scope;
-        session.send('debug "' + scopelocal.entity + '"');
+        //session.send('debug "' + scopelocal.entity + '"');
         // if (scopelocal.entity != "" ) {
         // builder.Prompts.confirm(session, 'Do you want to share externally?');
         // next();
@@ -295,6 +295,8 @@ bot.dialog('/u_share', [
         //     } };
         //     next();
         // };
+        session.send('done with found scope.')
+        session.endDialog();
     },
 
     function (session, result, next) {
