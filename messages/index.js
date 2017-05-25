@@ -107,7 +107,7 @@ intents.matches('Understand', [
         session.dialogData.service = service;
         var activity = builder.EntityRecognizer.findEntity(args.entities, 'Activity');
         session.dialogData.activity = activity;
-        var scope = builder.EntityRecognizer.findEntity(args.entity, 'Scope');
+        var scope = builder.EntityRecognizer.findEntity(args.entities, 'Scope');
         session.dialogData.scope = scope;
         session.send('test stringify');
         if (scope) {session.send('Scope found')}
