@@ -108,12 +108,14 @@ intents.matches('Understand', [
         var activity = builder.EntityRecognizer.findEntity(args.entities, 'Activity');
         session.dialogData.activity = activity;
         var scope = builder.EntityRecognizer.findEntity(args.entities, 'Scope');
-        session.dialogData.scope = scope;
+        
         if (scope) {
-                    session.send('Scope found "'+ scope.entity + '"');
+            session.send('Scope found "'+ scope.entity + '"');
+            session.dialogData.scope = scope;
         }
         else {
             session.send('no scope found #' + scope.entity + '#"');
+            session.dialogData.scope = '';
         };
 
         if (service) {
