@@ -109,11 +109,11 @@ intents.matches('Understand', [
         session.dialogData.activity = activity;
         var scope = builder.EntityRecognizer.findEntity(args.entities, 'Scope');
         session.dialogData.scope = scope;
-        session.send('test stringify');
+/*        session.send('test stringify');
         if (scope) {session.send('Scope found')}
         else {
             session.send('no scope found');
-        };
+        };*/
 
         if (service) {
             // session.send( 'You want to understand the service: "' + service.entity + '" - Cool !');
@@ -284,7 +284,12 @@ bot.dialog('/u_share', [
         builder.Prompts.confirm(session, 'Do you want to share externally?');
         next();
         } else {
-            session.send('found dialogdata scope' + JSON.stringify(session.dialogData.scope));
+            session.send('found dialogdata scope' );
+            if ((session.dialogData.scope.entity == 'external') || (session.dialogData.scope.entity == "externally")) {
+                session.send('If you share externally, you need to look at the classification before you use the "Share" function');
+            } else { if ((session.dialogdata.scope.entity == 'internal') || (session.dialogData.scope.entity == 'internally')) {
+                session.send('Fine, then you simply use the "Share" feature in either the browser or in Windows explorer');
+            } };
             next();
         };
     },
