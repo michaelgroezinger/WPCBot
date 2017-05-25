@@ -108,7 +108,7 @@ intents.matches('Understand', [
         var activity = builder.EntityRecognizer.findEntity(args.entities, 'Activity');
         session.dialogData.activity = activity;
         var scope = builder.EntityRecognizer.findEntity(args.entities, 'Scope');
-        session.dialogData.scope = scope;
+        session.dialogData.scope = scope,entity;
         if (scope) {session.send('Scope found "'+ scope.entity + '"')}
         else {
             session.send('no scope found #' + scope.entity + '#"');
@@ -280,7 +280,7 @@ bot.dialog('/u_share', [
 
     function (session, result, next) {
         var scopelocal = session.dialogData.scope;
-        if (scopelocal.entity == "") {
+        if (length(scopelocal) < 2) {
         builder.Prompts.confirm(session, 'Do you want to share externally?');
         next();
         } else {
@@ -311,6 +311,7 @@ bot.dialog('/u_share', [
     }
 
 ]);
+
 
 
 
