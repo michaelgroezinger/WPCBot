@@ -285,9 +285,9 @@ bot.dialog('/u_share', [
         next();
         } else {
             session.send('found dialogdata scope' );
-            if ((session.dialogData.scope.entity == 'external') || (session.dialogData.scope.entity == "externally")) {
+            if ((scopelocal.entity == 'external') || (scopelocal.entity == "externally")) {
                 session.send('If you share externally, you need to look at the classification before you use the "Share" function');
-            } else { if ((session.dialogdata.scope.entity == 'internal') || (session.dialogData.scope.entity == 'internally')) {
+            } else { if ((scopelocal.entity == 'internal') || (scopelocal.entity == 'internally')) {
                 session.send('Fine, then you simply use the "Share" feature in either the browser or in Windows explorer');
             } };
             next();
