@@ -109,7 +109,7 @@ intents.matches('Understand', [
         session.dialogData.activity = activity;
         var scope = builder.EntityRecognizer.findEntity(args.entity, 'Scope');
         session.dialogData.scope = scope;
-        session.send('test' + scope);
+        session.send('test' + stringyfy(scope));
 
         if (service) {
             // session.send( 'You want to understand the service: "' + service.entity + '" - Cool !');
