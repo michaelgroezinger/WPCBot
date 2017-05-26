@@ -114,7 +114,7 @@ intents.matches('Understand', [
             session.dialogData.scope = scope;
         }
         else {
-            session.send('no scope found #' + scope.entity + '#"');
+            session.send('no scope found');
             // session.dialogData.scope = '';
         };
 
