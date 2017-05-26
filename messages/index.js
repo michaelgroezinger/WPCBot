@@ -284,24 +284,24 @@ bot.dialog('/u_share', [
 
     function (session, result, next) {
         // var scopelocal = session.dialogData.scope;
-        if (session.dialogData.scope) {session.send('debug "' + session.dialogData.scope.entity + '"');}
+/*        if (session.dialogData.scope) {session.send('debug "' + session.dialogData.scope.entity + '"');}
         else {
             session.send('no scope in wf');
+        };*/
+        if (!session.dialogData.scope ) {
+        builder.Prompts.confirm(session, 'Do you want to share externally?');
+        next();
+        } else {
+            session.send('found dialogdata scope' );
+            if ((sessin.dialogData.scope.entity == 'external') || (sessin.dialogData.scope.entity == "externally")) {
+                session.send('If you share externally, you need to look at the classification before you use the "Share" function');
+            } else { if ((sessin.dialogData.scope.entity == 'internal') || (sessin.dialogData.scope.entity == 'internally')) {
+                session.send('Fine, then you simply use the "Share" feature in either the browser or in Windows explorer');
+            } };
+            session.send('done with found scope. Leave dialog.')
+            session.endDialog();
         };
-        // if (scopelocal.entity != "" ) {
-        // builder.Prompts.confirm(session, 'Do you want to share externally?');
-        // next();
-        // } else {
-        //     session.send('found dialogdata scope' );
-        //     if ((scopelocal.entity == 'external') || (scopelocal.entity == "externally")) {
-        //         session.send('If you share externally, you need to look at the classification before you use the "Share" function');
-        //     } else { if ((scopelocal.entity == 'internal') || (scopelocal.entity == 'internally')) {
-        //         session.send('Fine, then you simply use the "Share" feature in either the browser or in Windows explorer');
-        //     } };
-        //     next();
-        // };
-        session.send('done with found scope.')
-        session.endDialog();
+
     },
 
     function (session, result, next) {
