@@ -283,8 +283,11 @@ bot.dialog('/u_share', [
     },
 
     function (session, result, next) {
-        var scopelocal = session.dialogData.scope;
-        session.send('debug "' + scopelocal.entity + '"');
+        // var scopelocal = session.dialogData.scope;
+        if (session.dialogData.scope) {session.send('debug "' + session.dialogData.scope.entity + '"');}
+        else {
+            session.send('no scope in wf');
+        };
         // if (scopelocal.entity != "" ) {
         // builder.Prompts.confirm(session, 'Do you want to share externally?');
         // next();
