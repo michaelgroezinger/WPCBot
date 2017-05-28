@@ -112,6 +112,7 @@ intents.matches('Understand', [
         
         if (scope) {
             session.send('Scope found in intent Understand: "'+ scope.entity + '"');
+            session.send('this is session.dialogData.scope' + session.dialogData.scope.entity);
         }
         else {
             session.send('no scope found');
