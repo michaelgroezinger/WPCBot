@@ -284,8 +284,8 @@ bot.dialog('/u_share', [
     },
 
     function (session, result, next) {
-        // var scopelocal = session.dialogData.scope;
-       if (session.dialogData.scope) {session.send('debug: "' + session.dialogData.scope.entity + '"');}
+       session.send('Debug: in wf. THis is the dialog data: ' + session.dialogData.scope.entity);
+       if (session.dialogData.scope ) {session.send('debug: "' + session.dialogData.scope.entity + '"');}
         else {
             session.send('no scope in wf');
         };
