@@ -271,9 +271,10 @@ bot.dialog('/u_od', [
 bot.dialog('/u_share', [
     
     function (session, args, next) {
-       builder.Prompts.confirm(session,'Sharing enables you to easily give others access to a document or folder. <br>Do you want to know more about sharing documents?');
        session.dialogData.scope = args.scope; 
        session.send('debug: session dialog data assigned: '+ args.scope.entity + '"');
+       builder.Prompts.confirm(session,'Sharing enables you to easily give others access to a document or folder. <br>Do you want to know more about sharing documents?');
+       
     },
     function (session, result, next) {
         if (!result.response){
