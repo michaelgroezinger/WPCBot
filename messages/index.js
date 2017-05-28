@@ -284,8 +284,8 @@ bot.dialog('/u_share', [
     },
 
     function (session, result, next) {
-        session.send('Debug: in wf. THis is the dialog data: ');
-        if (session.dialogData.scope.entity.text == 'externally' ) {session.send('debug: discovered externally');}
+        session.send('Debug: in wf. THis is the dialog data: "' + session.dialogData.scope.entity + '"');
+        if (session.dialogData.scope.entity == 'externally' ) {session.send('debug: discovered externally');}
         else {
             session.send('no scope in wf');
         };
