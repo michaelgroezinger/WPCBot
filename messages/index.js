@@ -271,8 +271,8 @@ bot.dialog('/u_od', [
 bot.dialog('/u_share', [
     
     function (session, args, next) {
-       session.dialogData.scope = args.scope; 
-       session.send('debug: session dialog data assigned: '+ args.scope.entity + '"');
+       sessin.dialogData.scope = builder.EntityRecognizer.findEntity(args.entities, 'scope');
+       session.send('scope passed' + session.dialogData.scope + '"');
        builder.Prompts.confirm(session,'Sharing enables you to easily give others access to a document or folder. <br>Do you want to know more about sharing documents?');
        
     },
