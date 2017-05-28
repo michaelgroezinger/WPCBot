@@ -108,15 +108,16 @@ intents.matches('Understand', [
         var activity = builder.EntityRecognizer.findEntity(args.entities, 'Activity');
         session.dialogData.activity = activity;
         var scope = builder.EntityRecognizer.findEntity(args.entities, 'Scope');
+        session.dialogData.scope = scope;
         
-        if (scope) {
+/*        if (scope) {
             session.send('Scope found "'+ scope.entity + '"');
             session.dialogData.scope = scope;
         }
         else {
-            session.send('no scope found at start of understand');
+            session.send('no scope found');
             // session.dialogData.scope = '';
-        };
+        };*/
 
         if (service) {
             // session.send( 'You want to understand the service: "' + service.entity + '" - Cool !');
