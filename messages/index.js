@@ -289,7 +289,7 @@ bot.dialog('/u_share', [
         else {
             session.send('no scope in wf');
         };
-        if (session.dialogData.scope.entity === 'externally' ) {
+/*        if (session.dialogData.scope.entity === 'externally' ) {
             session.send('found dialogdata scope' );
             if ((sessin.dialogData.scope.entity === 'external') || (sessin.dialogData.scope.entity === "externally")) {
                 session.send('If you share externally, you need to look at the classification before you use the "Share" function');
@@ -303,7 +303,7 @@ bot.dialog('/u_share', [
         
             builder.Prompts.confirm(session, 'Do you want to share externally?');
             next();
-        };
+        };*/
 
     },
 
