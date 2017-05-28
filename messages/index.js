@@ -284,11 +284,11 @@ bot.dialog('/u_share', [
     },
 
     function (session, result, next) {
-       sesssion.send('Debug: in wf. THis is the dialog data: ');
-/*       if (session.dialogData.scope.entity.text == 'externally' ) {session.send('debug: discovered externally');}
+        session.send('Debug: in wf. THis is the dialog data: ');
+        if (session.dialogData.scope.entity.text == 'externally' ) {session.send('debug: discovered externally');}
         else {
             session.send('no scope in wf');
-        };*/
+        };
 /*        if (session.dialogData.scope.entity === 'externally' ) {
             session.send('found dialogdata scope' );
             if ((sessin.dialogData.scope.entity === 'external') || (sessin.dialogData.scope.entity === "externally")) {
