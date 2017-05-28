@@ -116,7 +116,7 @@ intents.matches('Understand', [
         }
         else {
             session.send('no scope found');
-            // session.dialogData.scope = '';
+            session.send('In case no scope this is dialogdata.scope : "'+ session.dialogData.scope + '"');
         };
 
         if (service) {
@@ -284,14 +284,14 @@ bot.dialog('/u_share', [
     },
 
     function (session, result, next) {
-       // session.send('Debug: in wf. THis is the dialog data: ' + session.dialogData.scope.entity);
-       if (session.dialogData.scope.entity == 'externally' ) {session.send('debug: "' + session.dialogData.scope.entity + '"');}
+       sesssion.send('Debug: in wf. THis is the dialog data: ' + session.dialogData.scope.entity);
+       if (session.dialogData.scope.entity === 'externally' ) {session.send('debug: "' + session.dialogData.scope.entity + '"');}
         else {
             session.send('no scope in wf: session.dialogData.scope.entity = "' + session.dialogData.scope.entity + '"');
         };
-        if (session.dialogData.scope ) {
+        if (session.dialogData.scope.entity === 'externally' ) {
             session.send('found dialogdata scope' );
-            if ((sessin.dialogData.scope.entity == 'external') || (sessin.dialogData.scope.entity == "externally")) {
+            if ((sessin.dialogData.scope.entity === 'external') || (sessin.dialogData.scope.entity === "externally")) {
                 session.send('If you share externally, you need to look at the classification before you use the "Share" function');
             } else { if ((sessin.dialogData.scope.entity == 'internal') || (sessin.dialogData.scope.entity == 'internally')) {
                 session.send('Fine, then you simply use the "Share" feature in either the browser or in Windows explorer');
