@@ -137,7 +137,7 @@ intents.matches('Understand', [
        
             if  ((activity.entity == 'share') || (activity.entity == "Sharing")) {
                 //session.send('Sharing enables you to easily give others access to a document or folder.')
-                session.beginDialog('/u_share', scope);
+                session.beginDialog('/u_share', scope.entity);
             } else if  ((activity.entity == 'co - author') || (activity.entity == 'co - authoring') || (activity.entity == 'joint editing'))  {
                  session.send('With this feature you can jointly edit a document. In the Online Version of Office even in real-time.')
             } else if (activity.entity == 'versioning') {
@@ -270,7 +270,7 @@ bot.dialog('/u_od', [
 bot.dialog('/u_share', [
     
     function (session, args, next) {
-       session.dialogData.scope = builder.EntityRecognizer.findEntity(args.entities, 'scope');
+       session.dialogData.scope = builder.EntityRecognizer.findEntity(args.entities, 'scope.entity');
        session.send('scope passed : "' + session.dialogData.scope + '"');
        builder.Prompts.confirm(session,'Sharing enables you to easily give others access to a document or folder. <br>Do you want to know more about sharing documents?');
        
